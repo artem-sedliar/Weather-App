@@ -514,7 +514,7 @@ body {
 
 .weekly-forecast-container.show {
   opacity: 1;
-  max-height: 500px;
+  max-height: 800px;
 }
 
 .weekly-forecast-container.hidden {
@@ -664,17 +664,24 @@ body {
 
 /* Responsive Design */
 @media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
   .weather-app {
-    padding: 16px;
+    padding: 0;
+    align-items: flex-start;
+    min-height: auto;
   }
   
   .container {
     max-width: 100%;
+    width: 100%;
   }
   
   .header {
     padding: 12px 16px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   
   .temperature-display {
@@ -716,28 +723,52 @@ body {
     padding: 12px 8px;
   }
   
+  .weekly-forecast-container.show {
+    max-height: 1000px;
+  }
+  
   .weekly-item {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-    padding: 16px;
+    flex-direction: row;
+    gap: 8px;
+    text-align: left;
+    padding: 12px 16px;
+    align-items: center;
   }
   
   .weekly-day {
-    min-width: auto;
-    text-align: center;
-    font-size: 16px;
+    min-width: 70px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
   }
   
   .weekly-weather {
-    justify-content: center;
+    justify-content: flex-start;
     gap: 8px;
+    flex: 1;
+  }
+  
+  .weekly-desc {
+    font-size: 13px;
+  }
+  
+  .weekly-icon {
+    font-size: 16px;
+    min-width: 18px;
   }
   
   .weekly-temps {
-    justify-content: center;
-    gap: 12px;
-    min-width: auto;
+    justify-content: flex-end;
+    gap: 6px;
+    min-width: 50px;
+  }
+  
+  .temp-high {
+    font-size: 15px;
+  }
+  
+  .temp-low {
+    font-size: 13px;
   }
   
   .background-elements .cloud.cloud-1 {
@@ -775,12 +806,29 @@ body {
 }
 
 @media (max-width: 360px) {
+  body {
+    padding: 8px;
+  }
+  
+  .container {
+    padding: 0;
+  }
+  
+  .header {
+    padding: 10px 12px;
+    margin-bottom: 16px;
+  }
+  
   .temperature-display .temp-main .temperature {
     font-size: 56px;
   }
   
   .weather-icon-main {
     font-size: 40px;
+  }
+  
+  .weather-stats {
+    margin-bottom: 24px;
   }
   
   .stats-grid .stat-card {
@@ -793,5 +841,97 @@ body {
   
   .stats-grid .stat-card .stat-info .stat-value {
     font-size: 18px;
+  }
+  
+  .forecast-section {
+    margin-top: 24px;
+  }
+  
+  .forecast-toggle {
+    margin-bottom: 16px;
+  }
+  
+  .toggle-btn {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .weekly-forecast-container.show {
+    max-height: 1200px;
+  }
+  
+  .weekly-item {
+    padding: 10px 12px;
+  }
+  
+  .weekly-day {
+    min-width: 60px;
+    font-size: 13px;
+  }
+  
+  .weekly-desc {
+    font-size: 12px;
+  }
+  
+  .weekly-icon {
+    font-size: 14px;
+  }
+  
+  .temp-high {
+    font-size: 14px;
+  }
+  
+  .temp-low {
+    font-size: 12px;
+  }
+}
+
+/* Стилі для високих вузьких екранів */
+@media (max-width: 480px) and (min-height: 800px) {
+  .weather-app {
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+  
+  .container {
+    margin-bottom: 20px;
+  }
+}
+
+/* Додаткові стилі для landscape орієнтації на мобільних */
+@media (max-width: 896px) and (max-height: 480px) and (orientation: landscape) {
+  .weather-app {
+    padding: 10px;
+    align-items: flex-start;
+  }
+  
+  .container {
+    max-width: 100%;
+  }
+  
+  .temperature-display {
+    flex-direction: row;
+    gap: 16px;
+  }
+  
+  .temperature-display .temp-main .temperature {
+    font-size: 48px;
+  }
+  
+  .weather-icon-main {
+    font-size: 36px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  
+  .stats-grid .stat-card {
+    padding: 8px;
+  }
+  
+  .weekly-item {
+    padding: 8px 12px;
   }
 }
