@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="weather-app">
+        <!-- Background Elements -->
+        <div class="background-elements">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+        </div>
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Header Section -->
+            <header class="header">
+                <div class="location-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="cityName">Kyiv</span>
+                </div>
+                <div class="search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </div>
+            </header>
+
+            <!-- Search Panel -->
+            <div class="search-panel" id="searchPanel">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="cityInput" placeholder="Пошук міста...">
+                    <button id="searchBtn" class="search-btn">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Weather Display -->
+            <main class="main-weather">
+                <!-- Current Temperature -->
+                <div class="temperature-display">
+                    <div class="temp-main">
+                        <span class="temperature" id="temperature">24°</span>
+                        <div class="temp-unit">C</div>
+                    </div>
+                    <div class="weather-icon-main">
+                        <i class="fas fa-sun" id="weatherIcon"></i>
+                    </div>
+                </div>
+
+                <!-- Weather Description -->
+                <div class="weather-info">
+                    <h2 class="weather-condition" id="description">Сонячно</h2>
+                    <p class="weather-details-text">
+                        Відчувається як <span id="feelsLike">26°</span>
+                    </p>
+                    <p class="date-info" id="currentDate">Понеділок, 16 Жовтня</p>
+                </div>
+            </main>
+
+            <!-- Weather Stats -->
+            <section class="weather-stats">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="windSpeed">12</span>
+                            <span class="stat-unit">км/год</span>
+                            <span class="stat-label">Вітер</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="humidity">65</span>
+                            <span class="stat-unit">%</span>
+                            <span class="stat-label">Вологість</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="visibility">10</span>
+                            <span class="stat-unit">км</span>
+                            <span class="stat-label">Видимість</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="pressure">1013</span>
+                            <span class="stat-unit">мб</span>
+                            <span class="stat-label">Тиск</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Forecast Section -->
+            <section class="forecast-section">
+                <!-- Forecast Toggle -->
+                <div class="forecast-toggle">
+                    <button class="toggle-btn active" id="hourlyToggle">Сьогодні</button>
+                    <button class="toggle-btn" id="weeklyToggle">Тиждень</button>
+                </div>
+
+                <!-- Hourly Forecast -->
+                <div class="hourly-forecast-container" id="hourlyForecastContainer">
+                    <div class="hourly-scroll" id="hourlyForecast">
+                        <div class="hourly-item">
+                            <span class="hourly-time">Зараз</span>
+                            <i class="fas fa-sun hourly-icon"></i>
+                            <span class="hourly-temp">24°</span>
+                        </div>
+                        <div class="hourly-item">
+                            <span class="hourly-time">13:00</span>
+                            <i class="fas fa-cloud-sun hourly-icon"></i>
+                            <span class="hourly-temp">26°</span>
+                        </div>
+                        <div class="hourly-item">
+                            <span class="hourly-time">14:00</span>
+                            <i class="fas fa-cloud hourly-icon"></i>
+                            <span class="hourly-temp">25°</span>
+                        </div>
+                        <div class="hourly-item">
+                            <span class="hourly-time">15:00</span>
+                            <i class="fas fa-cloud-rain hourly-icon"></i>
+                            <span class="hourly-temp">22°</span>
+                        </div>
+                        <div class="hourly-item">
+                            <span class="hourly-time">16:00</span>
+                            <i class="fas fa-cloud-rain hourly-icon"></i>
+                            <span class="hourly-temp">20°</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Forecast -->
+                <div class="weekly-forecast-container hidden" id="weeklyForecastContainer">
+                    <div class="weekly-list" id="weeklyForecast">
+                        <div class="weekly-item">
+                            <div class="weekly-day">Сьогодні</div>
+                            <div class="weekly-weather">
+                                <i class="fas fa-sun weekly-icon"></i>
+                                <span class="weekly-desc">Сонячно</span>
+                            </div>
+                            <div class="weekly-temps">
+                                <span class="temp-high">28°</span>
+                                <span class="temp-low">18°</span>
+                            </div>
+                        </div>
+                        <div class="weekly-item">
+                            <div class="weekly-day">Завтра</div>
+                            <div class="weekly-weather">
+                                <i class="fas fa-cloud-sun weekly-icon"></i>
+                                <span class="weekly-desc">Частково хмарно</span>
+                            </div>
+                            <div class="weekly-temps">
+                                <span class="temp-high">26°</span>
+                                <span class="temp-low">16°</span>
+                            </div>
+                        </div>
+                        <div class="weekly-item">
+                            <div class="weekly-day">Середа</div>
+                            <div class="weekly-weather">
+                                <i class="fas fa-cloud-rain weekly-icon"></i>
+                                <span class="weekly-desc">Дощ</span>
+                            </div>
+                            <div class="weekly-temps">
+                                <span class="temp-high">22°</span>
+                                <span class="temp-low">14°</span>
+                            </div>
+                        </div>
+                        <div class="weekly-item">
+                            <div class="weekly-day">Четвер</div>
+                            <div class="weekly-weather">
+                                <i class="fas fa-cloud weekly-icon"></i>
+                                <span class="weekly-desc">Хмарно</span>
+                            </div>
+                            <div class="weekly-temps">
+                                <span class="temp-high">24°</span>
+                                <span class="temp-low">15°</span>
+                            </div>
+                        </div>
+                        <div class="weekly-item">
+                            <div class="weekly-day">П'ятниця</div>
+                            <div class="weekly-weather">
+                                <i class="fas fa-sun weekly-icon"></i>
+                                <span class="weekly-desc">Сонячно</span>
+                            </div>
+                            <div class="weekly-temps">
+                                <span class="temp-high">27°</span>
+                                <span class="temp-low">17°</span>
+                            </div>
+                        </div>
+                        <div class="weekly-item">
+                            <div class="weekly-day">Субота</div>
+                            <div class="weekly-weather">
+                                <i class="fas fa-cloud-sun weekly-icon"></i>
+                                <span class="weekly-desc">Частково хмарно</span>
+                            </div>
+                            <div class="weekly-temps">
+                                <span class="temp-high">25°</span>
+                                <span class="temp-low">16°</span>
+                            </div>
+                        </div>
+                        <div class="weekly-item">
+                            <div class="weekly-day">Неділя</div>
+                            <div class="weekly-weather">
+                                <i class="fas fa-bolt weekly-icon"></i>
+                                <span class="weekly-desc">Гроза</span>
+                            </div>
+                            <div class="weekly-temps">
+                                <span class="temp-high">23°</span>
+                                <span class="temp-low">13°</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Завантаження даних про погоду...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
